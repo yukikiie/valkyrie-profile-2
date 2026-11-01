@@ -284,11 +284,11 @@ let browser;
     const roland = event('villnore-reunion-roland');
     assert.match(await clad.innerText(), /解放/);
     assert.match(await clad.innerText(), /ローランド/);
-    assert.equal(await itemLink(clad.locator('.event-rewards'), 'シルバークラッド').count(), 1);
+    assert.equal(await clad.locator('.event-rewards td > [data-guide-item="シルバークラッド"]').count(), 1);
     assert.match(await roland.innerText(), /50,000|50000/);
     await page.locator('.town-reunions > summary').click();
     assert.match(await page.locator('.town-reunions').innerText(), /同一輪|候選/);
-    assert.match(await page.locator('.town-reunions').innerText(), /第 1–4 章/);
+    assert.match(await page.locator('.town-reunions').innerText(), /第三～四章，第四章結束前/);
   });
 
   await check('Town quests and item source dialogs fit 390px and 320px screens with primary text at least 16px', async () => {

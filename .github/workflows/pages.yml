@@ -24,6 +24,8 @@ jobs:
         run: node scripts/audit-locations.cjs --require-locations
       - name: Verify town rewards, merchant recipes and material sources
         run: node scripts/audit-town-items.cjs
+      - name: Verify chapter NPC coverage and reunion timing
+        run: node scripts/audit-chapter-npcs.cjs
       - name: Build static and single-file editions
         run: node scripts/build.cjs
       - uses: actions/configure-pages@v5

@@ -1,6 +1,7 @@
 /* 城鎮事件明細：需求數量、累積門檻、交涉選項與回報地點分開記錄。 */
 window.VP_TOWN_EARLY = {
   sources: [
+    {id:'town-e-equipment-return',title:'Eclesis 原作者英靈專題：解放帶走武器防具，飾品返還',url:'https://gamefaqs.gamespot.com/ps2/931102-valkyrie-profile-2-silmeria/faqs/43867',checked:'2026-11-01',language:'en'},
     {id:'town-e-ring-spend',title:'triAce_Fanboy 原作者：三種動物指環各店累計消費 80,000 OTH',url:'https://www.neoseeker.com/valkyrie-profile-2-silmeria/faqs/139776-valkyrie-profile-2-a.html',checked:'2026-11-01',language:'en'},
     {id:'town-e-side',title:'GAME 大寶庫：動物餵食、任務回報、詩文、牧童',url:'https://game.daihouko.com/valkyrieprofile/2/50.html',checked:'2026-11-01',language:'ja'},
     {id:'town-e-z51',title:'ZAPAnet：動物餵食與城鎮回報',url:'https://zapanet.info/vp2/51.html',checked:'2026-11-01',language:'ja'},
@@ -152,23 +153,23 @@ window.VP_TOWN_EARLY = {
     },
     {
       id:'coriander-reunion-richelle',townId:'coriander',townName:'科里安德村',title:'解放英靈再會：リシェル',npc:'リシェル',location:'科里安德村民宅內',chapters:['ch3','ch4'],timing:'已招募並解放リシェル，第四章結束前到村內再會。',requires:[],
-      steps:['王家地下道同一輕戰士遺品需抽到リシェル；ジェシカ、シルフィード是同組另兩名候選，一次遊玩不能從同一遺品全招。','達到可解放等級後解放リシェル，再到科里安德村民宅交談；若未觸發繼續交談。'],rewards:[{at:'第四章以前再會',item:'識者の経験',quantity:1,note:'NPC 再會贈品，與森林續篇回報是兩個來源。'}],notes:['解放會讓該英靈離隊，裝備不返還；先檢查裝備再決定。'],sourceIds:['town-e-ein','town-e-d64']
+      steps:['王家地下道同一輕戰士遺品需抽到リシェル；ジェシカ、シルフィード是同組另兩名候選，一次遊玩不能從同一遺品全招。','達到可解放等級後解放リシェル，再到科里安德村民宅交談；若未觸發繼續交談。'],rewards:[{at:'第四章以前再會',item:'識者の経験',quantity:1,note:'NPC 再會贈品，與森林續篇回報是兩個來源。'}],notes:['解放會讓該英靈離隊，武器與防具會帶走、飾品返還；先檢查裝備再決定。'],sourceIds:['town-e-equipment-return','town-e-ein','town-e-d64']
     },
     {
       id:'coriander-reunion-sylphide',townId:'coriander',townName:'科里安德村',title:'解放英靈再會：シルフィード',npc:'シルフィード',location:'科里安德村民宅內',chapters:['ch3','ch4'],timing:'已招募並解放シルフィード，第四章結束前再會。',requires:[],
-      steps:['王家地下道輕戰士遺品需抽到シルフィード，再育成至可解放等級。','解放後到村內民宅反覆交談，領取金錢。'],rewards:[{at:'第四章以前再會',item:'OTH',quantity:50000,note:'同組候選リシェル的識者の経験、ジェシカ後期贈禮不能全數取得。'}],notes:['解放時該角色離隊，身上裝備不返還。'],sourceIds:['town-e-ein']
+      steps:['王家地下道輕戰士遺品需抽到シルフィード，再育成至可解放等級。','解放後到村內民宅反覆交談，領取金錢。'],rewards:[{at:'第四章以前再會',item:'OTH',quantity:50000,note:'同組候選リシェル的識者の経験、ジェシカ後期贈禮不能全數取得。'}],notes:['解放時該角色離隊，武器與防具會帶走、飾品返還。'],sourceIds:['town-e-equipment-return','town-e-ein']
     },
     {
       id:'villnore-reunion-clad',townId:'villnore',townName:'維爾諾亞',title:'解放英靈再會：クラッド與稀有シルバークラッド',npc:'クラッド',location:'維爾諾亞民宅內',chapters:['ch3','ch4'],timing:'已招募並解放クラッド，第四章結束前到城內再會。',requires:[],
-      steps:['王家地下道重戰士遺品需抽到クラッド，與ローランド為同組候選。','育成至可解放等級並解放後，到維爾諾亞民宅與他交談。'],rewards:[{at:'第四章以前再會',item:'シルバークラッド',quantity:1,note:'不是同名普通商店商品。'}],notes:['先核對裝備再解放；解放角色與其當時裝備不會留在隊伍。'],sourceIds:['town-e-ein','town-e-s1']
+      steps:['王家地下道重戰士遺品需抽到クラッド，與ローランド為同組候選。','育成至可解放等級並解放後，到維爾諾亞民宅與他交談。'],rewards:[{at:'第四章以前再會',item:'シルバークラッド',quantity:1,note:'不是同名普通商店商品。'}],notes:['先核對裝備再解放；解放角色及其當時武器、防具不會留在隊伍，飾品會返還。'],sourceIds:['town-e-equipment-return','town-e-ein','town-e-s1']
     },
     {
       id:'villnore-reunion-roland',townId:'villnore',townName:'維爾諾亞',title:'解放英靈再會：ローランド',npc:'ローランド',location:'維爾諾亞民宅內',chapters:['ch3','ch4'],timing:'已招募並解放ローランド，第四章結束前再會。',requires:[],
-      steps:['王家地下道重戰士遺品需抽到ローランド；不能同時由該遺品取得クラッド。','育成至可解放等級並解放，回維爾諾亞民宅交談。'],rewards:[{at:'第四章以前再會',item:'OTH',quantity:50000,note:'金錢贈禮。'}],notes:['解放時裝備不返還。'],sourceIds:['town-e-ein']
+      steps:['王家地下道重戰士遺品需抽到ローランド；不能同時由該遺品取得クラッド。','育成至可解放等級並解放，回維爾諾亞民宅交談。'],rewards:[{at:'第四章以前再會',item:'OTH',quantity:50000,note:'金錢贈禮。'}],notes:['解放時武器與防具會帶走、飾品返還。'],sourceIds:['town-e-equipment-return','town-e-ein']
     },
     {
       id:'kalstad-reunion-kirke',townId:'kalstad',townName:'卡爾斯塔德',title:'解放英靈再會：キルケ與稀有クラッドメイル',npc:'キルケ',location:'卡爾斯塔德民宅內',chapters:['ch3','ch4'],timing:'第三章森林遺跡招募並解放後，第四章結束前再會。',requires:[],
-      steps:['クローサス森林遺跡輕戰士遺品需抽到キルケ；同組為フローディア、ラスカ。','育成至可解放等級並解放，回卡爾斯塔德民宅找她交談。'],rewards:[{at:'第四章以前再會',item:'クラッドメイル',quantity:1,note:'與クラッド的シルバークラッド不同。'}],notes:['解放角色的裝備不返還；此條只適用實際抽到キルケ的存檔。'],sourceIds:['town-e-ein']
+      steps:['クローサス森林遺跡輕戰士遺品需抽到キルケ；同組為フローディア、ラスカ。','育成至可解放等級並解放，回卡爾斯塔德民宅找她交談。'],rewards:[{at:'第四章以前再會',item:'クラッドメイル',quantity:1,note:'與クラッド的シルバークラッド不同。'}],notes:['解放角色的武器與防具會帶走、飾品返還；此條只適用實際抽到キルケ的存檔。'],sourceIds:['town-e-equipment-return','town-e-ein']
     }
   ]
 };

@@ -138,7 +138,8 @@ let browser;
   passed('Reference search routes directly to the matching filtered record and survives reload');
 
   await search('バハムートティア');
-  const weaponResult = results.locator('.search-result').filter({hasText: '武器'}).first();
+  assert.match(await results.locator('.search-result').first().locator('small').innerText(), /^武器 ·/, 'An exact Japanese weapon name must rank ahead of NPC text mentioning it');
+  const weaponResult = results.locator('.search-result').filter({has: page.locator('small', {hasText: /^武器 ·/})}).first();
   await weaponResult.waitFor();
   await weaponResult.click();
   await page.locator('#detail-dialog[open]').waitFor();
