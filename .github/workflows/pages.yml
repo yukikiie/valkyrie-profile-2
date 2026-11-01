@@ -22,6 +22,8 @@ jobs:
         run: node scripts/audit.cjs
       - name: Verify maps, treasure positions and regional encounters
         run: node scripts/audit-locations.cjs --require-locations
+      - name: Verify town rewards, merchant recipes and material sources
+        run: node scripts/audit-town-items.cjs
       - name: Build static and single-file editions
         run: node scripts/build.cjs
       - uses: actions/configure-pages@v5

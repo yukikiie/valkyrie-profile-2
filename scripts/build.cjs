@@ -4,7 +4,7 @@ const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'dist');
 const site = path.join(output, 'site');
 fs.mkdirSync(site, {recursive:true});
-for (const file of ['index.html','fonts.css','styles.css','app.js','location-ui.js','.nojekyll']) fs.copyFileSync(path.join(root,file),path.join(site,file));
+for (const file of ['index.html','fonts.css','styles.css','app.js','item-guide.js','location-ui.js','.nojekyll']) fs.copyFileSync(path.join(root,file),path.join(site,file));
 for (const dir of ['assets','data']) fs.cpSync(path.join(root,dir),path.join(site,dir),{recursive:true});
 let html = fs.readFileSync(path.join(root,'index.html'),'utf8');
 html = html.replace(/<link rel="stylesheet" href="([^"]+)">/g,(_,reference)=>'<style>'+fs.readFileSync(path.join(root,reference.split('?')[0]),'utf8').replace(/@import\s+url\([^)]*\)\s*;/g,'')+'</style>');

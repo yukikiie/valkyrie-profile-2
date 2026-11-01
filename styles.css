@@ -650,3 +650,47 @@ dialog::backdrop { background: #0b182ce0; backdrop-filter: blur(8px); }
 .treasure-card dd,.location-encounter-note{font-size:16px;line-height:1.85}.location-drop-table td{font-size:16px}.drop-condition{font-size:14px;line-height:1.8}@media(max-width:700px){.treasure-card dd,.treasure-card p,.location-pane-heading p,.location-encounter-note{font-size:16px;line-height:1.85}.treasure-card dt{font-size:13px}}
 
 .item-original{display:block;color:var(--muted);font:400 12px/1.7 var(--sans);margin-top:5px;letter-spacing:0}.treasure-marker{white-space:nowrap}.treasure-card-top .pill{margin-right:auto}
+
+/* Item provenance and town events share the archive's readable ivory cards. */
+.item-link { display: inline; padding: 0 1px; border: 0; border-bottom: 1px dotted #a58a58; border-radius: 0; color: #3a597e; background: transparent; font: inherit; text-align: left; overflow-wrap: anywhere; line-height: inherit; }
+.item-link:hover { color: #856325; border-bottom-style: solid; background: #dcc99e25; }
+.item-quantity { white-space: nowrap; color: #7e6435; font-weight: 600; }
+.material-list { margin: 9px 0 17px; padding-left: 24px; } .material-list li { margin: 7px 0; } .material-list p { margin: 3px 0; font-size: 16px; }
+.recipe-grid, .merchant-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr)); gap: 18px; }
+.recipe-card { min-width: 0; padding: 20px; color: var(--ink); background: #f5f2e8; border: 1px solid #d9ceb5; border-radius: 9px; }
+.recipe-card p { margin: 8px 0; font-size: 16px; line-height: 1.85; } .recipe-card h5 { margin: 19px 0 6px; font-size: 16px; }
+.recipe-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 13px; } .recipe-heading strong { font-size: 20px; } .recipe-heading .pill { font-size: 12px; }
+.recipe-price b { color: #7e6435; } .recipe-condition { padding-top: 12px; border-top: 1px solid #d9ceb5; }
+.shop-reference { padding: 0; overflow: hidden; } .shop-reference .recipe-card { height: 100%; border: 0; border-radius: inherit; background: transparent; }
+.acquisition-row { min-width: 0; padding: 17px 0; border-bottom: 1px solid #ddd6c5; } .acquisition-row:last-child { border-bottom: 0; }
+.acquisition-row p { margin: 6px 0; font-size: 16px; } .acquisition-row h4 { margin: 0; font-size: 20px; }
+.acquisition-links { display: flex; flex-wrap: wrap; gap: 7px 16px; } .acquisition-links a,.acquisition-link { color: #516c8d; border-bottom: 1px solid #c4ad7a; font-size: 16px; } .acquisition-links small { color: var(--muted); font-size: 14px; }
+.acquisition-more { margin-top: 17px; padding: 12px 16px; border: 1px solid #ded4be; border-radius: 7px; } .acquisition-more summary { cursor: pointer; color: #6e5c39; font-size: 16px; }
+.item-facts { display: grid; grid-template-columns: 120px minmax(0,1fr); gap: 10px 20px; padding: 20px; background: #f0ebdf; border-radius: 8px; } .item-facts dt { color: #7c6b4d; font-size: 15px; } .item-facts dd { margin: 0; font-size: 16px; }
+.chapter-town-panel { margin: 22px 0 30px; padding: 23px; color: var(--ink); background: var(--card); border: 1px solid #d6c59e; border-radius: 12px; }
+.chapter-town-panel > .section-heading { margin: 0 0 12px; } .chapter-town-panel .section-heading h2 { color: var(--ink); font-size: 25px; } .chapter-town-panel .section-heading .text-link { color: #705b36; }
+.chapter-town-panel > p { margin: 0 0 18px; font-size: 16px; } .chapter-town-links { display: grid; gap: 8px; }
+.chapter-town-detail { border: 1px solid #e0d9c9; border-radius: 8px; overflow: hidden; background: #f4f0e5; } .chapter-town-detail > summary { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 15px; padding: 13px 16px; cursor: pointer; font-size: 16px; }
+.chapter-town-detail > summary::after { content: '+'; margin-left: auto; color: #9a8151; } .chapter-town-detail[open] > summary::after { content: '−'; }
+.chapter-town-detail > summary > span { color: #8c7751; font-size: 14px; } .chapter-town-detail > .town-event-card { border: 0; margin: 0; border-top: 1px solid #e0d9c9; border-radius: 0; }
+.town-event-card { min-width: 0; margin: 18px 0; padding: 25px; color: var(--ink); background: var(--card); border: 1px solid #ddd3bd; border-radius: 10px; scroll-margin-top: 100px; }
+.town-event-card h3 { margin: 7px 0 18px; font: 700 27px/1.5 var(--serif); } .town-event-card h4 { margin: 20px 0 9px; font-size: 17px; }
+.town-event-card dl { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 10px 17px; margin: 16px 0; } .town-event-card dt { color: #8c7751; font-size: 14px; } .town-event-card dd { margin: 0; font-size: 16px; }
+.town-event-card .quest-steps { margin: 20px 0; font-size: 17px; } .town-event-card .quest-steps li { margin-bottom: 12px; }
+.event-timing { color: #805f39; } .event-rewards { margin: 20px 0; box-shadow: none; } .event-rewards td { font-size: 16px; } .event-rewards small { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+.event-rewards th:last-child,.event-rewards td:last-child { min-width: 65px; text-align: center; }
+.town-local-events { margin: 25px 0; } .town-local-events > .location-group-title { color: var(--ink); }
+.town-dossier { margin: 30px 0 45px; } .town-dossier > .section-heading h2 { color: #f3ead5; } .town-dossier > .map-note { color: #c8cfda; }
+.merchant-card { min-width: 0; padding: 23px; color: var(--ink); background: #ede7d8; border: 1px solid #d6c297; border-radius: 10px; } .merchant-card h3 { margin: 0 0 12px; font: 700 25px/1.5 var(--serif); } .merchant-card p { font-size: 16px; }
+.town-shop-list,.town-reunions,.crafting-rules { margin: 19px 0; padding: 20px; color: var(--ink); background: var(--card); border: 1px solid #d5c49e; border-radius: 10px; }
+.town-shop-list > summary,.town-reunions > summary,.crafting-rules > summary { cursor: pointer; font-size: 18px; font-weight: 500; } .town-shop-list[open] > summary,.town-reunions[open] > summary { margin-bottom: 22px; }
+.crafting-rules p { font-size: 16px; }
+@media(max-width:700px){
+  .chapter-town-panel { padding: 17px; } .chapter-town-panel .section-heading { display: block; } .chapter-town-panel .section-heading h2 { font-size: 23px; }
+  .chapter-town-detail > summary { padding: 12px; gap: 3px; } .chapter-town-detail > summary > span { flex-basis: 100%; } .chapter-town-detail > summary strong { flex: 1; }
+  .town-event-card { padding: 18px; } .town-event-card h3 { font-size: 24px; } .town-event-card dl { display: block; } .town-event-card dt { margin-top: 14px; } .town-event-card dd { margin-top: 4px; }
+  .town-event-card .quest-steps { padding-left: 22px; font-size: 16px; } .town-event-card .material-list { padding-left: 20px; }
+  .recipe-card,.merchant-card,.town-shop-list,.town-reunions,.crafting-rules { padding: 17px; } .recipe-heading strong { font-size: 18px; }
+  .item-facts { grid-template-columns: 88px minmax(0,1fr); gap: 10px; padding: 15px; }
+  .event-rewards table { min-width: 360px; } .event-rewards th,.event-rewards td { padding: 12px 10px; }
+}

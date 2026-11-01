@@ -90,7 +90,7 @@ let browser;
   const multiwordResults = await results.locator('.search-result').allTextContents();
   assert.ok(multiwordResults.length > 0);
   assert.ok(multiwordResults.every(text => text.includes('王家')), 'Combined query must restrict every result to the requested area');
-  const dropResult = results.locator('.search-result').filter({hasText: '掉落'}).filter({hasText: '骨クズ'}).first();
+  const dropResult = results.locator('.search-result').filter({has: page.locator('small', {hasText: /^掉落 ·/})}).filter({hasText: '骨クズ'}).first();
   await dropResult.waitFor();
   await dropResult.click();
   const dropPane = page.locator('[data-dossier="royal-path"] [data-location-pane="drops"]');
