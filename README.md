@@ -22,6 +22,8 @@ node scripts/build.cjs
 
 資料完整性檢查：`node scripts/audit.cjs` 與 `node scripts/audit-locations.cjs --require-locations`。桌面與手機瀏覽測試涵蓋搜尋、篩選、HP 差異表、圖鑑視窗、地圖／寶箱互動、區域掉落、進度匯入匯出與單檔版；驗證紀錄見 [research/validation.md](research/validation.md)。
 
+頁面頂部提供常駐搜尋框，支援中／日／英名稱、即時建議及空格組合關鍵字，可直接前往地點、寶藏位置、當地掉落與裝備資料。按 Enter 顯示完整結果，按 `/` 開啟全站搜尋。專用測試為 `node scripts/smoke-search.cjs`，可用 `VP_TEST_ORIGIN` 指定部署網址。
+
 正式網站：**[開啟繁體中文攻略](https://yukikiie.github.io/valkyrie-profile-2/)**。原始碼位於 [`yukikiie/valkyrie-profile-2`](https://github.com/yukikiie/valkyrie-profile-2)，已啟用 GitHub Pages 自動部署；推送至 `main` 後，工作流程會檢查資料、建立網站及單檔版，再發布網站。
 
 **[下載／開啟單一 HTML](https://yukikiie.github.io/valkyrie-profile-2/valkyrie-profile-2.html)**：另存後可離線閱讀內嵌資料、地圖、字體與圖片。

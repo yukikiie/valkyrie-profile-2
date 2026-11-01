@@ -110,19 +110,119 @@
   const missables=()=> (W.missables||[]).map((x,i)=> typeof x==='string'?{id:'m'+i,title:x}:x);
   function checklist(){const list=missables();const complete=list.filter(x=>progress['missable:'+x.id]).length;$('#main').innerHTML=pageHead('THE MISSABLES CHECKLIST','不可錯過清單','在重大事件前逐一確認。進度僅儲存在這台裝置的瀏覽器；更換裝置前可匯出備份。這份清單不是遊戲存檔。')+`<section class="panel"><div class="check-status"><b>${complete}</b> / ${list.length} 項已確認</div><div class="progress-track"><span style="width:${list.length?complete/list.length*100:0}%"></span></div><div class="check-tools"><button id="export-progress">匯出進度</button><button id="import-progress">匯入進度</button><input type="file" id="progress-file" accept="application/json,.json" hidden></div><div>${list.map(x=>`<label class="check-item ${progress['missable:'+x.id]?'done':''}"><input type="checkbox" data-progress="missable:${esc(x.id)}" ${progress['missable:'+x.id]?'checked':''}><div><span class="pill gold">${esc(x.chapter||x.deadline||x.timing||x.when||'重要檢查')}</span><h3>${esc(x.title||x.name)}</h3>${[x.description,x.detail,x.action,x.condition,x.reward].filter(Boolean).map(v=>`<p>${esc(plain(v))}</p>`).join('')}${Array.isArray(x.steps)?x.steps.map(v=>`<p>${esc(plain(v))}</p>`).join(''):''}${srcLinks(x.sourceIds)}</div></label>`).join('')}</div></section>`;$('#export-progress').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,game:'vp2-silmeria',savedAt:new Date().toISOString(),progress},null,2)],{type:'application/json'});const link=document.createElement('a');const u=URL.createObjectURL(blob);link.href=u;link.download='vp2-guide-progress.json';link.click();setTimeout(()=>URL.revokeObjectURL(u),1000);};$('#import-progress').onclick=()=>$('#progress-file').click();$('#progress-file').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;const d=JSON.parse(await f.text());if(d.game!=='vp2-silmeria'||!d.progress||typeof d.progress!=='object'||Array.isArray(d.progress))throw Error();const valid={};for(const[k,v]of Object.entries(d.progress))if(/^(stage|missable|treasure):[\w-]+$/.test(k)&&typeof v==='boolean')valid[k]=v;progress={...progress,...valid};saveProgress();checklist();toast('已匯入攻略進度。');}catch{toast('無法匯入，請選擇本攻略匯出的 JSON 檔。');}};}
   function sourcePage(){const counts=[['各地配置圖',`${(L.areas||[]).length} 個地區，${(L.areas||[]).reduce((n,a)=>n+(a.maps?.length||0),0)} 張配置圖`,'迷宮原圖已內嵌並保留來源；城鎮設施圖依攻略文字重繪，互動標記對應圖上編號。'],['區域怪物與掉落',`${(E.regions||[]).length} 個流程區段`,'初訪、再訪與樓層分開，普通掉落、部位破壞、領袖及一次獎勵分列。'],['主線與紅蓮迷宮',`${chapters.length} 個章節群組，${stages.length} 個流程區段`,'包含城鎮、主線、可選迷宮、重返事件與 SG；每個地點整合配置圖、寶藏位置及當地遭遇。'],['魔物與頭目',`${M.length} 筆，${M.filter(m=>m.hp!=null).length} 筆附 HP`,'來源缺漏的能力值、機率與部位不補猜；不同遭遇型態可能分列。'],['武器',`${A.length} 筆，${new Set(A.map(w=>w.type)).size} 類`,'保留原日文名；中文名為便於閱讀的說明性譯名。'],['防具／技能／封印石',`${(X.armor||[]).length} / ${(X.skills||[]).length} / ${(X.sealstones||[]).length}`,'原來源不一致處附註記；特殊效果須配合持有／場地條件。'],['飾品／道具／魔法',`${(X.accessories||[]).length} / ${(X.items||[]).length} / ${(X.magic||[]).length}`,'收錄日文物品名稱、中文效果、能力與取得方式。'],['商店與製作',`${(X.shops||[]).length} 筆商品與配方`,'素材數量與店舖來源逐項列示；庫存隨劇情及熟客條件變化。'],['英靈',`${(X.einherjar||[]).length} 名`,'同一遺物只能取得一名候選；不能單輪全收集。'],['圖片',`${Object.keys(badgeMap).length} 個頭目名稱圖示對照`,'部分為同圖對照；其他魔物、武器採原創分類圖示，非官方模型圖鑑。']];$('#main').innerHTML=pageHead('RESEARCH & CREDITS','研究來源與資料說明','整理日期：2026 年 11 月 1 日。攻略以 PlayStation 2《Valkyrie Profile 2: Silmeria》為範圍；以多個日文與英文原作者資料交叉核對重要條件。')+`<div class="notice">本頁可核查資料範圍，並非聲稱所有細節均已經由實機逐項驗證。未取得可靠數值的欄位標為「未載明」；無法解釋的來源差異保留註記，請以遊戲實際顯示為最終依據。</div><div class="section-heading"><h2>收錄範圍與限制</h2></div><div class="table-wrap"><table class="coverage-table"><thead><tr><th>項目</th><th>收錄數量</th><th>閱讀方式</th></tr></thead><tbody>${counts.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><div class="intro-cards"><div class="panel"><strong>數值依來源呈現</strong><p>隊長加成、封印石、主線周回與 SG 周回都可能影響數值；不同表格的數字不逕自當成同一難度。</p></div><div class="panel"><strong>圖片與地圖</strong><p>首頁背景為 imagegen 生成的原創奇幻裝飾，並非遊戲場景或地圖。部分頭目使用 RA 成就圖示；其餘為原創類型圖標。配置圖已整合於章節，保留原作者來源；城鎮設施圖依文字攻略重繪並標示。</p></div><div class="panel"><strong>原創中文整理</strong><p>流程、說明與圖解以繁體中文重新編寫；日文名稱和數值用來核對原作。原攻略文章及地圖未整站轉載。</p></div></div><div class="section-heading"><h2>參考資料<small>${uniqueSources.length} SOURCE PAGES</small></h2></div><div class="sources-list">${uniqueSources.map((s,i)=>`<article class="source-card"><span class="source-number">${String(i+1).padStart(2,'0')}</span><div><h3><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)} ↗</a></h3><p>${esc(s.language||'')} ${esc(s.url)}</p>${s.note||s.notes?`<p>${esc(plain(s.note||s.notes))}</p>`:''}</div></article>`).join('')}</div><div class="notice">本網站為非官方玩家攻略，與 Square Enix、tri-Ace 及各資料來源網站無隸屬關係。遊戲與角色原畫權利屬原權利人；成就圖示由 RetroAchievements 社群製作。外部來源可能改版或失效。</div>`;}
-  const searchIndex=[...stages.map(s=>({kind:'stage',id:s.id,title:s.name,sub:[s.jp,s.en].filter(Boolean).join(' / '),route:`#walkthrough/${s.chapterId}/${s.id}`,icon:'map',text:searchText(s)})),...M.map(m=>({kind:'monster',id:m.id,title:titleOf(m),sub:'魔物 · '+plain(m.jp)+' · '+areaOf(m),icon:monsterIcon(m),text:searchText(m)})),...A.map(w=>({kind:'weapon',id:w.id,title:titleOf(w),sub:'武器 · '+w.jp+' · '+w.type,icon:weaponIcon(w),text:searchText(w)})),...['armor','accessories','items','magic','skills','sealstones','einherjar','shops'].flatMap(k=>(X[k]||[]).map(r=>({kind:'reference',title:titleOf(r),sub:plain([r.jp,r.type,r.effect]),route:'#weapons/'+k,icon:k==='skills'?'rune':k==='sealstones'?'gate':k==='armor'?'shield':'humanoid',text:searchText(r)})))];
-  function updateSearch(){const q=$('#global-search').value.trim().toLowerCase();if(!q){$('#search-results').innerHTML='<p class="search-hint">可搜尋中／日／英名稱、素材、符文或地點。<br>例如：奉竜殿、バハムート、Valkyrie、治癒。</p>';return;}const arr=searchIndex.filter(x=>x.text.includes(q));$('#search-results').innerHTML=`<div class="result-count">${arr.length} 筆結果${arr.length>60?'，顯示前 60 筆，請縮小關鍵字':''}</div>`+arr.slice(0,60).map((r,i)=>`<button class="search-result" data-search-index="${searchIndex.indexOf(r)}">${icon(r.icon)}<span>${esc(r.title)}<small>${esc(r.sub).slice(0,160)}</small></span></button>`).join('')+(arr.length?'':'<p class="empty">找不到符合的資料，試試日文原名或較短關鍵字。</p>');}
-  function route(){const parts=decodeURIComponent(location.hash.slice(1)||'home').split('/');const [page,id,stage]=parts;$('#sidebar').classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');if($('#detail-dialog').open)$('#detail-dialog').close();if($('#search-dialog').open)$('#search-dialog').close();$$('[data-nav]').forEach(a=>{const active=a.dataset.nav===page;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});if(page==='walkthrough')walkthrough(id,stage);else if(page==='maps')maps();else if(page==='monsters')monsters();else if(page==='weapons')weapons(id||'weapons');else if(page==='systems')systems();else if(page==='checklist')checklist();else if(page==='sidequests')sidequests();else if(page==='sources')sourcePage();else home();fillIcons();document.title=`${({home:'攻略首頁',walkthrough:'全章節流程',maps:'世界與迷宮',monsters:'魔物圖鑑',weapons:'武器與裝備',systems:'戰鬥與養成',checklist:'不可錯過清單',sidequests:'支線與收集',sources:'研究來源'})[page]||'攻略首頁'}｜女神戰記 2 Silmeria`;if(!stage)window.scrollTo(0,0);}
+  const searchKey = value => plain(value).normalize('NFKC').toLocaleLowerCase().trim();
+  const stageById = new Map(stages.map(s=>[s.id,s]));
+  const monsterById = new Map(M.map(m=>[m.id,m]));
+  const searchItemNames = new Map([...A,...['armor','accessories','items','magic','sealstones'].flatMap(k=>X[k]||[])].filter(r=>r.jp&&r.name).map(r=>[r.jp,r.name]));
+  const itemSearchLabel = item => searchItemNames.get(item)||plain(item);
+  const referenceLabels = {armor:'防具',accessories:'飾品與素材',items:'道具',magic:'魔法',skills:'技能',sealstones:'封印石',einherjar:'英靈',shops:'商店與製作'};
+  const treasureSearch = (L.areas||[]).flatMap(area=>(area.treasures||[]).flatMap(t=>{
+    const stage=(t.stageIds||area.stageIds||[]).map(id=>stageById.get(id)).find(Boolean);
+    if(!stage)return [];
+    return [{kind:'treasure',title:itemSearchLabel(t.item),sub:`寶藏 · ${area.name} · ${plain(t.location)}${t.condition?' · '+plain(t.condition):''}`,route:`#walkthrough/${stage.chapterId}/${stage.id}/treasures/${encodeURIComponent(t.id)}`,icon:'check',text:plain([t,area.name,area.jp,area.en,itemSearchLabel(t.item),'寶藏 寶箱'])}];
+  }));
+  const dropSearch = (E.regions||[]).flatMap(region=>{
+    const stage=(region.stageIds||[region.id]).map(id=>stageById.get(id)).find(Boolean);
+    if(!stage)return [];
+    const grouped=new Map();
+    for(const d of window.VP_REGION_DROPS?.[region.id]||[]){
+      const key=d.monsterId+'|'+d.item;
+      if(!grouped.has(key))grouped.set(key,{...d,parts:[],kinds:[]});
+      const row=grouped.get(key);row.parts.push(d.part);row.kinds.push(d.kind);
+    }
+    return [...grouped.values()].map(d=>{
+      const monster=monsterById.get(d.monsterId),parts=[...new Set(d.parts)].join('／'),kinds=[...new Set(d.kinds)].join('／');
+      return {kind:'drop',title:itemSearchLabel(d.item),sub:`掉落 · ${stage.name} · ${monster?.name||d.monsterId} · ${parts} · ${kinds}`,route:`#walkthrough/${stage.chapterId}/${stage.id}/drops/${encodeURIComponent(d.item)}/${d.monsterId}`,icon:'check',text:plain([d,stage.name,stage.jp,stage.en,monster?.name,monster?.jp,monster?.en,itemSearchLabel(d.item),'掉落 素材'])};
+    });
+  });
+  const searchIndex=[
+    ...stages.map(s=>({kind:'stage',id:s.id,title:s.name,sub:'地點 · '+[s.jp,s.en,s.chapterTitle].filter(Boolean).join(' / '),route:`#walkthrough/${s.chapterId}/${s.id}`,icon:'map',text:plain(s)})),
+    ...M.map(m=>({kind:'monster',id:m.id,title:titleOf(m),sub:'魔物 · '+plain(m.jp)+' · '+areaOf(m),icon:monsterIcon(m),text:plain(m)})),
+    ...A.map(w=>({kind:'weapon',id:w.id,title:titleOf(w),sub:'武器 · '+w.jp+' · '+w.type,icon:weaponIcon(w),text:plain(w)})),
+    ...Object.keys(referenceLabels).flatMap(k=>(X[k]||[]).map(r=>({kind:'reference',title:titleOf(r),sub:referenceLabels[k]+' · '+plain([r.jp,r.type,r.effect]),route:'#weapons/'+k+'/'+encodeURIComponent(r.jp||r.name||r.title||''),icon:k==='skills'?'rune':k==='sealstones'?'gate':k==='armor'?'shield':'humanoid',text:plain(r)}))),
+    ...treasureSearch,...dropSearch
+  ].map((r,index)=>({...r,index,text:searchKey([r.title,r.sub,r.text]),titleKey:searchKey(r.title)}));
+  function findSearch(query){
+    const q=searchKey(query),terms=q.split(/\s+/).filter(Boolean);
+    if(!terms.length)return [];
+    const priority={stage:6,monster:5,weapon:7,reference:7,treasure:4,drop:0};
+    const score=r=>(r.titleKey===q?100:r.titleKey.includes(q)?60:terms.every(t=>r.titleKey.includes(t))?45:0)+priority[r.kind];
+    return searchIndex.filter(r=>terms.every(term=>r.text.includes(term))).sort((a,b)=>score(b)-score(a)||a.index-b.index);
+  }
+  const searchResult = r => `<button type="button" class="search-result" data-search-index="${r.index}">${icon(r.icon)}<span>${esc(r.title)}<small>${esc(r.sub.slice(0,180))}</small></span></button>`;
+  function closeSuggestions(){ $('#search-suggestions').hidden=true; }
+  function updateSuggestions(){
+    const input=$('#site-search-input'),panel=$('#search-suggestions'),query=input.value.trim();
+    if(!query){closeSuggestions();$('#site-search-status').textContent='';return;}
+    const results=findSearch(query);
+    panel.innerHTML=`<div class="result-count">${results.length} 筆結果 · 快速前往</div>`+results.slice(0,8).map(searchResult).join('')+(results.length?'':'<p class="empty">找不到符合的資料，試試日文原名或較短關鍵字。</p>')+'<button type="button" class="search-all" data-search-all>查看完整搜尋結果 →</button>';
+    panel.hidden=false;$('#site-search-status').textContent=`找到 ${results.length} 筆結果；按 Enter 查看完整結果，或按向下鍵選取建議。`;
+  }
+  function updateSearch(){
+    const query=$('#global-search').value.trim();$('#site-search-input').value=query;
+    if(!query){$('#search-results').innerHTML='<p class="search-hint">搜尋中／日／英名稱、地點、寶藏、怪物、掉落素材與裝備。<br>可用空格組合關鍵字，例如：王家 骨クズ。</p>';return;}
+    const results=findSearch(query);
+    $('#search-results').innerHTML=`<div class="result-count">${results.length} 筆結果${results.length>120?'，顯示前 120 筆；可加入地名縮小範圍':''}</div>`+results.slice(0,120).map(searchResult).join('')+(results.length?'':'<p class="empty">找不到符合的資料，試試日文原名或較短關鍵字。</p>');
+  }
+  function openSearch(query=$('#site-search-input').value){
+    closeSuggestions();$('#global-search').value=query;updateSearch();
+    if(!$('#search-dialog').open)$('#search-dialog').showModal();
+    $('#global-search').focus();
+  }
+  function route(){
+    const parts=(location.hash.slice(1)||'home').split('/').map(part=>{try{return decodeURIComponent(part);}catch{return part;}});
+    const [page,id,stage,tab,target,monsterId]=parts;
+    closeSuggestions();$('#sidebar').classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');
+    if($('#detail-dialog').open)$('#detail-dialog').close();if($('#search-dialog').open)$('#search-dialog').close();
+    $$('[data-nav]').forEach(a=>{const active=a.dataset.nav===page;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    if(page==='walkthrough'){
+      walkthrough(id,stage);
+      if(stage&&['map','treasures','monsters','drops'].includes(tab))requestAnimationFrame(()=>{
+        locationUI.showTab(stage,tab);
+        if(tab==='treasures'&&target){
+          const card=document.getElementById(`treasure-${stage}-${target}`);
+          if(card){card.classList.add('highlight');card.setAttribute('tabindex','-1');card.focus({preventScroll:true});card.scrollIntoView({block:'center'});}
+        }
+        if(tab==='drops'&&target){
+          const root=document.getElementById(`loc-${stage}-drops`),query=$('[data-regional-drop-search]',root||document),select=$('[data-regional-drop-monster]',root||document);
+          if(select){select.value=monsterId||'all';select.dispatchEvent(new Event('change',{bubbles:true}));}
+          if(query){query.value=target;query.dispatchEvent(new Event('input',{bubbles:true}));}
+          root?.scrollIntoView({block:'start'});
+        }
+      });
+    }else if(page==='maps')maps();else if(page==='monsters')monsters();else if(page==='weapons'){
+      weapons(id||'weapons');
+      if(stage){const input=$('#reference-query')||$('#weapon-query');if(input){input.value=stage;input.dispatchEvent(new Event('input',{bubbles:true}));}}
+    }else if(page==='systems')systems();else if(page==='checklist')checklist();else if(page==='sidequests')sidequests();else if(page==='sources')sourcePage();else home();
+    fillIcons();document.title=`${({home:'攻略首頁',walkthrough:'全章節流程',maps:'世界與迷宮',monsters:'魔物圖鑑',weapons:'武器與裝備',systems:'戰鬥與養成',checklist:'不可錯過清單',sidequests:'支線與收集',sources:'研究來源'})[page]||'攻略首頁'}｜女神戰記 2 Silmeria`;
+    if(page!=='walkthrough'||!stage)window.scrollTo(0,0);
+  }
   document.addEventListener('click',e=>{
+    if(!e.target.closest('#site-search-form'))closeSuggestions();
+    if(e.target.closest('[data-search-all]')){openSearch();return;}
     const m=e.target.closest('[data-monster]');if(m){monsterDetail(m.dataset.monster);return;}
     const w=e.target.closest('[data-item]');if(w){weaponDetail(w.dataset.item);return;}
     const p=e.target.closest('[data-page]');if(p&&!p.disabled){if(p.dataset.scope==='monster'){monsterState.page=Number(p.dataset.page);updateMonsters();$('#monster-count').scrollIntoView({block:'start'});}else{weaponState.page=Number(p.dataset.page);updateWeapons();$('#weapon-count').scrollIntoView({block:'start'});}return;}
     const f=e.target.closest('[data-find-monster]');if(f){const q=f.dataset.findMonster;const hits=M.filter(m=>[m.name,m.jp,m.en].some(n=>n&&(q.includes(n)||n.includes(q))));if(hits.length===1)monsterDetail(hits[0].id);else{monsterState={query:q,type:'all',area:'all',boss:'all',page:1};if(location.hash==='#monsters')monsters();else location.hash='monsters';}return;}
-    const s=e.target.closest('[data-search-index]');if(s){const r=searchIndex[Number(s.dataset.searchIndex)];$('#search-dialog').close();if(r.kind==='monster')monsterDetail(r.id);else if(r.kind==='weapon')weaponDetail(r.id);else location.hash=r.route;}
+    const s=e.target.closest('[data-search-index]');if(s){const r=searchIndex[Number(s.dataset.searchIndex)];if(!r)return;closeSuggestions();if($('#search-dialog').open)$('#search-dialog').close();if(r.kind==='monster')monsterDetail(r.id);else if(r.kind==='weapon')weaponDetail(r.id);else if(location.hash===r.route)route();else location.hash=r.route;}
   });
   document.addEventListener('change',e=>{if(e.target.dataset.progress){progress[e.target.dataset.progress]=e.target.checked;saveProgress();if(location.hash.startsWith('#checklist'))checklist();}});
-  document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('tr[data-item]')){e.preventDefault();weaponDetail(e.target.dataset.item);}if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement?.tagName)){e.preventDefault();$('#search-dialog').showModal();$('#global-search').focus();}});
-  $('#search-open').onclick=()=>{$('#search-dialog').showModal();$('#global-search').focus();};$('#search-close').onclick=()=>$('#search-dialog').close();$('#global-search').oninput=updateSearch;
+  document.addEventListener('keydown',e=>{
+    if(e.isComposing&&e.key==='Enter'){e.preventDefault();return;}
+    if(e.key==='Escape'&&!$('#search-suggestions').hidden){e.preventDefault();$('#site-search-input').focus();closeSuggestions();return;}
+    if(e.target.closest('#site-search-form')&&['ArrowDown','ArrowUp'].includes(e.key)){
+      if(e.target.id==='site-search-input'&&$('#search-suggestions').hidden)updateSuggestions();
+      const buttons=$$('#search-suggestions button');
+      if(buttons.length&&!$('#search-suggestions').hidden){e.preventDefault();const i=buttons.indexOf(e.target),next=i+(e.key==='ArrowDown'?1:-1);if(next<0)$('#site-search-input').focus();else buttons[Math.min(next,buttons.length-1)].focus();}return;
+    }
+    if((e.key==='Enter'||e.key===' ')&&e.target.matches('tr[data-item]')){e.preventDefault();weaponDetail(e.target.dataset.item);}
+    if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement?.tagName)&&!document.activeElement?.isContentEditable){e.preventDefault();openSearch();}
+  });
+  $('#site-search-form').onsubmit=e=>{e.preventDefault();if(!e.isComposing)openSearch();};
+  $('#site-search-input').oninput=updateSuggestions;$('#site-search-input').onfocus=()=>{if(!$('#search-dialog').open)updateSuggestions();};
+  $('#site-search-form').addEventListener('focusout',e=>{if(!e.currentTarget.contains(e.relatedTarget))closeSuggestions();});
+  $('#search-close').onclick=()=>$('#search-dialog').close();$('#global-search').oninput=updateSearch;
+  $('#search-dialog').addEventListener('close',closeSuggestions);
   $('.dialog-close').onclick=()=>$('#detail-dialog').close();[$('#detail-dialog'),$('#search-dialog')].forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const b=d.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)d.close();}}));
   $('#menu-toggle').onclick=()=>{const open=$('#sidebar').classList.toggle('open');$('#menu-toggle').setAttribute('aria-expanded',String(open));};
   $('#print-button').onclick=()=>{$$('details.stage').forEach(d=>d.open=true);window.print();};
