@@ -1,0 +1,21 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const output = path.join(root, 'dist');
+const site = path.join(output, 'site');
+fs.mkdirSync(site, {recursive:true});
+for (const file of ['index.html','styles.css','app.js','.nojekyll']) fs.copyFileSync(path.join(root,file),path.join(site,file));
+for (const dir of ['assets','data']) fs.cpSync(path.join(root,dir),path.join(site,dir),{recursive:true});
+let html = fs.readFileSync(path.join(root,'index.html'),'utf8');
+html = html.replace(/<link rel="stylesheet" href="([^"]+)">/g,(_,file)=>'<style>'+fs.readFileSync(path.join(root,file),'utf8').replace(/@import\s+url\([^;]+;/g,'')+'</style>');
+html = html.replace(/<script defer src="([^"]+)"><\/script>/g,(_,file)=>'<script defer>'+fs.readFileSync(path.join(root,file),'utf8').replace(/<\/script/gi,'<\\/script')+'</script>');
+// Inline scripts execute after the DOM has been parsed; data scripts precede app.js.
+html = html.replace(/<script defer>([\s\S]*?)<\/script>/g,(_,code)=>{if(code.includes('const $ ='))return '';return '<script>'+code+'</script>';});
+const appCode = fs.readFileSync(path.join(root,'app.js'),'utf8').replace(/<\/script/gi,'<\\/script');
+html = html.replace('</body>',()=>'<script>'+appCode+'</script>\n</body>');
+const types = {'.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml'};
+const cache = new Map();
+html = html.replace(/assets\/[a-zA-Z0-9_./-]+\.(?:png|jpg|svg)/g,file=>{if(!cache.has(file)){const p=path.join(root,file);if(!fs.existsSync(p))throw Error('Missing asset '+file);cache.set(file,'data:'+types[path.extname(file)]+';base64,'+fs.readFileSync(p).toString('base64'));}return cache.get(file);});
+fs.writeFileSync(path.join(output,'valkyrie-profile-2.html'),html);
+fs.writeFileSync(path.join(site,'valkyrie-profile-2.html'),html);
+console.log(JSON.stringify({site:'dist/site',standalone:'dist/valkyrie-profile-2.html',bytes:Buffer.byteLength(html),embeddedAssets:cache.size},null,2));

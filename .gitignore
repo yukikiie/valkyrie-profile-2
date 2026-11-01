@@ -1,0 +1,9 @@
+node_modules/
+artifacts/
+*.log
+.env*
+!.env.example
+dist/
+research/*.html
+research/_*
+scripts/publish.local.*

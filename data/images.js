@@ -1,0 +1,111 @@
+window.VP_MONSTER_IMAGES = {
+  "バリスティックライノ": {
+    "jp": "バリスティックライノ",
+    "file": "assets/monsters/391334.png",
+    "url": "https://media.retroachievements.org/Badge/391334.png"
+  },
+  "カオスウーズ": {
+    "jp": "カオスウーズ",
+    "file": "assets/monsters/391339.png",
+    "url": "https://media.retroachievements.org/Badge/391339.png"
+  },
+  "ワイバーン": {
+    "jp": "ワイバーン",
+    "file": "assets/monsters/391345.png",
+    "url": "https://media.retroachievements.org/Badge/391345.png"
+  },
+  "グリフォン": {
+    "jp": "グリフォン",
+    "file": "assets/monsters/401498.png",
+    "url": "https://media.retroachievements.org/Badge/401498.png"
+  },
+  "クラーケン": {
+    "jp": "クラーケン",
+    "file": "assets/monsters/407151.png",
+    "url": "https://media.retroachievements.org/Badge/407151.png"
+  },
+  "エヴォルブ": {
+    "jp": "エヴォルブ",
+    "file": "assets/monsters/407375.png",
+    "url": "https://media.retroachievements.org/Badge/407375.png"
+  },
+  "ヒドラ": {
+    "jp": "ヒドラ",
+    "file": "assets/monsters/408561.png",
+    "url": "https://media.retroachievements.org/Badge/408561.png"
+  },
+  "ドラゴンゾンビ": {
+    "jp": "ドラゴンゾンビ",
+    "file": "assets/monsters/408905.png",
+    "url": "https://media.retroachievements.org/Badge/408905.png"
+  },
+  "クイーンワスプ": {
+    "file": "assets/monsters/401503.png",
+    "url": "https://media.retroachievements.org/Badge/401503.png"
+  },
+  "レディ・クレイオ": {
+    "file": "assets/monsters/408004.png",
+    "url": "https://media.retroachievements.org/Badge/408004.png"
+  },
+  "ハムスター": {
+    "file": "assets/monsters/419368.png",
+    "url": "https://media.retroachievements.org/Badge/419368.png"
+  },
+  "フラれストーカー": {
+    "file": "assets/monsters/418059.png",
+    "url": "https://media.retroachievements.org/Badge/418059.png"
+  },
+  "フロー": {
+    "file": "assets/monsters/418194.png",
+    "url": "https://media.retroachievements.org/Badge/418194.png"
+  },
+  "イセリア・クイーン": {
+    "file": "assets/monsters/419373.png",
+    "url": "https://media.retroachievements.org/Badge/419373.png"
+  },
+  "ディルナ・ハミルトン": {
+    "file": "assets/monsters/417131.png",
+    "url": "https://media.retroachievements.org/Badge/417131.png"
+  },
+  "フレイ": {
+    "file": "assets/monsters/415034.png",
+    "url": "https://media.retroachievements.org/Badge/415034.png"
+  },
+  "オーディン": {
+    "file": "assets/monsters/414661.png",
+    "url": "https://media.retroachievements.org/Badge/414661.png"
+  },
+  "ウル": {
+    "file": "assets/monsters/410736.png",
+    "url": "https://media.retroachievements.org/Badge/410736.png"
+  },
+  "ヘイムダル": {
+    "file": "assets/monsters/417923.png",
+    "url": "https://media.retroachievements.org/Badge/417923.png"
+  },
+  "バハムート": {
+    "file": "assets/monsters/418196.png",
+    "url": "https://media.retroachievements.org/Badge/418196.png"
+  },
+  "アレクタリス": {
+    "file": "assets/monsters/411631.png",
+    "url": "https://media.retroachievements.org/Badge/411631.png"
+  },
+  "ガブリエ・セレスタ": {
+    "file": "assets/monsters/417938.png",
+    "url": "https://media.retroachievements.org/Badge/417938.png"
+  },
+  "ヴォータン": {
+    "file": "assets/monsters/417940.png",
+    "url": "https://media.retroachievements.org/Badge/417940.png"
+  },
+  "コボルトキング": {
+    "file": "assets/monsters/409393.png",
+    "url": "https://media.retroachievements.org/Badge/409393.png"
+  },
+  "アリューゼ": {
+    "file": "assets/monsters/410740.png",
+    "url": "https://media.retroachievements.org/Badge/410740.png",
+    "caption": "亞莉與亞琉哲共同頭目戰的成就徽章；圖像主體為亞琉哲。"
+  }
+};
