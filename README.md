@@ -20,7 +20,9 @@ node scripts/build.cjs
 
 資料完整性檢查：`node scripts/audit.cjs`。桌面與手機瀏覽測試涵蓋搜尋、篩選、HP 差異表、圖鑑視窗、所有參考資料頁、進度匯入匯出與單檔版；驗證紀錄見 [research/validation.md](research/validation.md)。
 
-預定儲存庫為 [`yukikiie/valkyrie-profile-2`](https://github.com/yukikiie/valkyrie-profile-2)，Pages 預定網址為 `https://yukikiie.github.io/valkyrie-profile-2/`。部署狀態為待 GitHub 授權與實際發布；本機完成不代表網址已上線。將出版檔部署至該儲存庫的 GitHub Pages，並依儲存庫設定啟用 Pages 工作流程。
+正式網站：**[開啟繁體中文攻略](https://yukikiie.github.io/valkyrie-profile-2/)**。原始碼位於 [`yukikiie/valkyrie-profile-2`](https://github.com/yukikiie/valkyrie-profile-2)，已啟用 GitHub Pages 自動部署；推送至 `main` 後，工作流程會檢查資料、建立網站及單檔版，再發布網站。
+
+**[下載／開啟單一 HTML](https://yukikiie.github.io/valkyrie-profile-2/valkyrie-profile-2.html)**：另存後可離線閱讀內嵌資料與圖片，外部地圖連結仍需網路。
 
 中文名稱為本站自譯，日名保留作遊戲選單對照。所有流程小圖都是原創順序示意；精確房間幾何請使用遊戲內地圖或各區連結的原作者地圖。25 筆敵人圖像對照採有出處的社群成就徽章，其餘使用分類示意圖。部分敵人能力、掉落率及版本差異仍標為未核實，完整範圍見 [研究覆蓋紀錄](research/coverage.md)。
 
