@@ -26,7 +26,7 @@ async function main(){
   const upstream=git(['ls-remote','--heads','origin','main']);
   const localHead=spawnSync('git',['rev-parse','--verify','HEAD'],{cwd:root,encoding:'utf8',windowsHide:true});
   if(upstream&&localHead.status!==0)throw Error('Target repository is already populated; integrate its history before publishing.');
-  git(['add','--','index.html','styles.css','app.js','assets','data','research','scripts','README.md','.gitignore','.gitattributes','.nojekyll','.github']);
+  git(['add','--','index.html','fonts.css','styles.css','app.js','location-ui.js','assets','data','research','scripts','README.md','.gitignore','.gitattributes','.nojekyll','.github']);
   const staged=spawnSync('git',['diff','--cached','--quiet'],{cwd:root,windowsHide:true});
   if(staged.status===1)git(['-c','user.name='+owner,'-c',`user.email=${user.id}+${owner}@users.noreply.github.com`,'commit','-m','Build researched Traditional Chinese Valkyrie Profile 2 guide']);
   git(['push','-u','origin','main']);

@@ -2,7 +2,9 @@
 
 供 GitHub Pages 使用的靜態 HTML 攻略，包含六章主線、支線迷宮、熾天使之門、可搜尋圖鑑與收集清單。核對日期：2026-11-01。
 
-目前收錄 50 個流程區段、169 個步驟、157 組財寶核對點、10 項支線、234 筆敵人／戰鬥階段、114 件武器、96 件防具、50 項技能、66 顆封印石與 40 名英靈，另有 386 筆飾品／符文素材、140 筆道具、29 筆魔法及 333 筆商店與製作資料，共連結 127 個不同來源頁。
+目前收錄 50 個流程區段、169 個步驟、10 項支線、234 筆敵人／戰鬥階段、114 件武器、96 件防具、50 項技能、66 顆封印石與 40 名英靈，另有 386 筆飾品／符文素材、140 筆道具、29 筆魔法及 333 筆商店與製作資料，共連結 147 個不同來源頁。
+
+章節內新增 **地圖／寶藏／怪物／掉落** 四分頁，涵蓋 37 個實際地區、51 張配置圖、365 筆逐物寶藏位置與 118 個互動標記。42 個不同來源圖檔已快取，可在網站或離線版中直接放大閱讀；7 張城鎮設施圖依原作者逐戶攻略重繪，另有 1 張通道示意。各次到訪和樓層的怪物分開整理，提供 4,237 筆區域掉落紀錄。
 
 本機預覽：
 
@@ -16,14 +18,14 @@ node scripts/serve.cjs
 node scripts/build.cjs
 ```
 
-`dist/valkyrie-profile-2.html` 為可直接開啟、離線使用的單一 HTML；`dist/site/` 為 GitHub Pages 版本。原作者實際地圖與來源連結需要網路。
+`dist/valkyrie-profile-2.html` 為可直接開啟、離線使用的單一 HTML；`dist/site/` 為 GitHub Pages 版本。地圖、字體與必要圖片均已內嵌於單檔版；只有外部參考連結需要網路。
 
-資料完整性檢查：`node scripts/audit.cjs`。桌面與手機瀏覽測試涵蓋搜尋、篩選、HP 差異表、圖鑑視窗、所有參考資料頁、進度匯入匯出與單檔版；驗證紀錄見 [research/validation.md](research/validation.md)。
+資料完整性檢查：`node scripts/audit.cjs` 與 `node scripts/audit-locations.cjs --require-locations`。桌面與手機瀏覽測試涵蓋搜尋、篩選、HP 差異表、圖鑑視窗、地圖／寶箱互動、區域掉落、進度匯入匯出與單檔版；驗證紀錄見 [research/validation.md](research/validation.md)。
 
 正式網站：**[開啟繁體中文攻略](https://yukikiie.github.io/valkyrie-profile-2/)**。原始碼位於 [`yukikiie/valkyrie-profile-2`](https://github.com/yukikiie/valkyrie-profile-2)，已啟用 GitHub Pages 自動部署；推送至 `main` 後，工作流程會檢查資料、建立網站及單檔版，再發布網站。
 
-**[下載／開啟單一 HTML](https://yukikiie.github.io/valkyrie-profile-2/valkyrie-profile-2.html)**：另存後可離線閱讀內嵌資料與圖片，外部地圖連結仍需網路。
+**[下載／開啟單一 HTML](https://yukikiie.github.io/valkyrie-profile-2/valkyrie-profile-2.html)**：另存後可離線閱讀內嵌資料、地圖、字體與圖片。
 
-中文名稱為本站自譯，日名保留作遊戲選單對照。所有流程小圖都是原創順序示意；精確房間幾何請使用遊戲內地圖或各區連結的原作者地圖。25 筆敵人圖像對照採有出處的社群成就徽章，其餘使用分類示意圖。部分敵人能力、掉落率及版本差異仍標為未核實，完整範圍見 [研究覆蓋紀錄](research/coverage.md)。
+中文名稱為本站自譯，日名保留作遊戲選單對照。配置圖保留原作者地圖標號並附署名與來源；城鎮重繪圖明示比例與未確認位置。25 筆敵人圖像對照採有出處的社群成就徽章，其餘使用分類示意圖。部分敵人能力、掉落率及版本差異仍標為未核實，完整範圍見 [研究覆蓋紀錄](research/coverage.md)。字體與原創背景說明見 [改版紀錄](research/redesign.md)。
 
 主要事實來源為 [ZAPAnet](https://zapanet.info/vp2/)、[青珠之星](https://www.seiju.info/vp2.html)、[GAME 大寶庫](https://game.daihouko.com/valkyrieprofile/2/)、[GorillaWiki](https://valkyrieprofile2.gorillawiki.jp/)，以及 [Gundam4Fun 物品攻略](https://www.neoseeker.com/valkyrie-profile-2-silmeria/faqs/143712-valkyrie-profile-2-item.html)、[YYugi51 SG 攻略](https://www.supercheats.com/playstation2/walkthroughs/valkyrieprofile2silmeria-walkthrough05.txt)等原作者資料；每項資料附有來源。官方原畫展示來源為 [RPGFan](https://www.rpgfan.com/gallery/valkyrie-profile-2-silmeria-artwork/)，敵人徽章對照來源為 [RetroAchievements](https://retroachievements.org/forums/topic/22725)。原遊戲與原畫權利屬 tri-Ace、Square Enix 及原權利人，地圖與攻略來源保留原作者署名。

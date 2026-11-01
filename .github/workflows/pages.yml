@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify source data
         run: node scripts/audit.cjs
+      - name: Verify maps, treasure positions and regional encounters
+        run: node scripts/audit-locations.cjs --require-locations
       - name: Build static and single-file editions
         run: node scripts/build.cjs
       - uses: actions/configure-pages@v5

@@ -1,4 +1,4 @@
-/* Structured factual research; see VP_MONSTER_SOURCES. Chinese labels and advice are original editorial text. */
+/* Factual monster records. Context corrections: see data/encounters.js and research/encounters.md. */
 window.VP_MONSTER_META = {
   "count": 234,
   "withHp": 231,
@@ -361,6 +361,51 @@ window.VP_MONSTER_SOURCES = [
     "url": "https://vp2.kouryaku.red/entry29.html",
     "kind": "玩家整理數據",
     "note": "HP 保留原站遭遇紀錄，與基礎值分開呈現；原站部分 HP 有明顯差異，勿當成唯一基礎值。"
+  },
+  {
+    "id": "enc-ch1",
+    "title": "青珠之星：第 1、2 章區域敵人、部位素材表",
+    "url": "https://www.seiju.info/vp2/chart/chart1.html"
+  },
+  {
+    "id": "enc-ch3",
+    "title": "青珠之星：第 3 章各迷宮敵人、部位素材表",
+    "url": "https://www.seiju.info/vp2/chart/chart2.html"
+  },
+  {
+    "id": "enc-ch4",
+    "title": "青珠之星：第 4 章再訪敵人與新增首領",
+    "url": "https://www.seiju.info/vp2/chart/chart3.html"
+  },
+  {
+    "id": "enc-ch5",
+    "title": "青珠之星：第 5 章區域敵人、部位素材表",
+    "url": "https://www.seiju.info/vp2/chart/chart4.html"
+  },
+  {
+    "id": "enc-ch6",
+    "title": "青珠之星：雷札德之塔各層敵人、部位素材表",
+    "url": "https://www.seiju.info/vp2/chart/chart5.html"
+  },
+  {
+    "id": "enc-sg",
+    "title": "青珠之星：熾天使之門各層、稀有遭遇及犬小屋",
+    "url": "https://www.seiju.info/vp2/chart/seraphic.html"
+  },
+  {
+    "id": "enc-tower-rare",
+    "title": "Raye Penber：雷札德之塔四層稀有敵人",
+    "url": "https://rayepenber.nusutto.jp/valkyrieprofile/map/lezard.html"
+  },
+  {
+    "id": "enc-chulip",
+    "title": "chulip.org：各區域與 SG 樓層敵人名單交叉核對",
+    "url": "https://chulip.org/entry/2009/03/14/000000"
+  },
+  {
+    "id": "enc-boss-repeat",
+    "title": "ZAPAnet：首領再戰可否與部位掉落",
+    "url": "https://zapanet.info/vp2/108.html"
   }
 ];
 window.VP_MONSTERS = [
@@ -22903,8 +22948,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第1層",
-      "熾天使之門・第2層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -23025,7 +23068,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "undead",
     "boss": false,
@@ -23043,7 +23089,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "デーモン",
       "アンホーリィ"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m151",
@@ -23052,8 +23099,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第1層",
-      "熾天使之門・第3層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -23094,7 +23139,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "magic",
     "boss": false,
@@ -23111,7 +23159,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "マジック"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m152",
@@ -23120,10 +23169,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第1層",
-      "熾天使之門・第2層",
-      "熾天使之門・第3層",
-      "熾天使之門・第4層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -23203,7 +23248,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "dragon",
     "boss": false,
@@ -23220,7 +23268,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "ドラゴン、スケイル"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m153",
@@ -23229,10 +23278,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第1層",
-      "熾天使之門・第2層",
-      "熾天使之門・第3層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "獸類"
@@ -23316,7 +23362,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "beast",
     "boss": false,
@@ -23340,7 +23389,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "ビースト"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m154",
@@ -23349,8 +23399,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第2層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "魔法"
@@ -23491,7 +23540,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "magic",
     "boss": false,
@@ -23515,7 +23567,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "マジック"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m155",
@@ -23524,7 +23577,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第1層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -23620,7 +23672,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "demon",
     "boss": false,
@@ -23637,7 +23692,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "デーモン"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m156",
@@ -23646,7 +23702,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第1層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -23742,7 +23797,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "giant",
     "boss": false,
@@ -23759,7 +23817,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "ジャイアント"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m157",
@@ -23768,9 +23827,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第2層",
-      "熾天使之門・第3層",
-      "熾天使之門・第4層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -23896,7 +23952,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "demon",
     "boss": false,
@@ -23914,7 +23973,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "デーモン",
       "ビースト"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m158",
@@ -23923,8 +23983,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第2層",
-      "熾天使之門・第4層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -24015,7 +24073,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "magic",
     "boss": false,
@@ -24032,7 +24093,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "マジック"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m159",
@@ -24041,9 +24103,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第2層",
-      "熾天使之門・第4層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [],
     "level": 52,
@@ -24164,7 +24224,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "unknown",
     "boss": false,
@@ -24186,7 +24249,8 @@ window.VP_MONSTERS = [
       "hp": "seiju-chart5"
     },
     "aliases": [],
-    "typeJp": []
+    "typeJp": [],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m160",
@@ -24195,8 +24259,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第2層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "巨型",
@@ -24301,7 +24364,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "plant",
     "boss": false,
@@ -24327,7 +24393,8 @@ window.VP_MONSTERS = [
       "ジャイアント",
       "プラント",
       "アンホーリィ"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m161",
@@ -24336,8 +24403,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第3層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "不死／不潔",
@@ -24501,7 +24567,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "undead",
     "boss": false,
@@ -24526,7 +24595,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "アンホーリィ",
       "マジック"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m162",
@@ -24535,7 +24605,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第2層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -24596,7 +24665,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "undead",
     "boss": false,
@@ -24614,7 +24686,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "ビースト",
       "アンホーリィ"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m163",
@@ -24623,8 +24696,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第2層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "不死／不潔",
@@ -24788,7 +24860,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "undead",
     "boss": false,
@@ -24813,7 +24888,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "アンホーリィ",
       "マジック"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m164",
@@ -24822,8 +24898,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第3層",
-      "熾天使之門・第4層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -24942,7 +25016,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "beast",
     "boss": false,
@@ -24960,7 +25037,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "ジャイアント",
       "ビースト"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m165",
@@ -24969,9 +25047,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第3層",
-      "熾天使之門・第4層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "惡魔",
@@ -25148,7 +25224,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "demon",
     "boss": false,
@@ -25174,7 +25253,8 @@ window.VP_MONSTERS = [
       "デーモン",
       "スケイル",
       "マジック"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m166",
@@ -25183,7 +25263,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第3層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -25214,7 +25293,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "seiju-chart5",
       "pluto-enemy3",
-      "kouryaku-24"
+      "kouryaku-24",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "undead",
     "boss": true,
@@ -25238,7 +25320,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "ゴッド",
       "アンホーリィ"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m167",
@@ -25247,7 +25330,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第3層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -25284,7 +25366,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "seiju-chart5",
       "pluto-enemy3",
-      "kouryaku-24"
+      "kouryaku-24",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "magic",
     "boss": true,
@@ -25307,7 +25392,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "マジック"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m168",
@@ -25316,7 +25402,6 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "熾天使之門・第3層",
       "レザード・ヴァレスの塔"
     ],
     "type": [
@@ -25457,7 +25542,10 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "monster-chulip",
       "seiju-chart5",
-      "pluto-enemy3"
+      "pluto-enemy3",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "beast",
     "boss": false,
@@ -25475,7 +25563,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "ジャイアント",
       "ビースト"
-    ]
+    ],
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m169",
@@ -25484,8 +25573,7 @@ window.VP_MONSTERS = [
     "en": "Lezard Valeth",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第4層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "魔法"
@@ -25523,7 +25611,10 @@ window.VP_MONSTERS = [
       "boss-zapa",
       "seiju-chart5",
       "pluto-enemy3",
-      "kouryaku-24"
+      "kouryaku-24",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "magic",
     "boss": true,
@@ -25553,7 +25644,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "マジック"
     ],
-    "hpNote": "來源含不同遭遇值；領袖、周目及封印石會改變實戰數值。"
+    "hpNote": "來源含不同遭遇值；領袖、周目及封印石會改變實戰數值。",
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m170",
@@ -25648,8 +25740,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第4層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "魔法"
@@ -25691,7 +25782,10 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "zone-171",
       "seiju-chart5",
-      "kouryaku-24"
+      "kouryaku-24",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "magic",
     "boss": true,
@@ -25715,7 +25809,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "マジック"
     ],
-    "hpNote": "來源含不同遭遇值；領袖、周目及封印石會改變實戰數值。"
+    "hpNote": "來源含不同遭遇值；領袖、周目及封印石會改變實戰數值。",
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m172",
@@ -25724,8 +25819,7 @@ window.VP_MONSTERS = [
     "en": "",
     "area": [
       "レザード･ヴァレスの塔",
-      "レザード・ヴァレスの塔",
-      "熾天使之門・第4層"
+      "レザード・ヴァレスの塔"
     ],
     "type": [
       "魔法"
@@ -25780,7 +25874,10 @@ window.VP_MONSTERS = [
       "zone-171",
       "boss-zapa",
       "seiju-chart5",
-      "kouryaku-24"
+      "kouryaku-24",
+      "enc-ch6",
+      "enc-sg",
+      "enc-chulip"
     ],
     "icon": "magic",
     "boss": true,
@@ -25815,7 +25912,8 @@ window.VP_MONSTERS = [
     "typeJp": [
       "マジック"
     ],
-    "hpNote": "來源含不同遭遇值；領袖、周目及封印石會改變實戰數值。"
+    "hpNote": "來源含不同遭遇值；領袖、周目及封印石會改變實戰數值。",
+    "areaNote": "本篇塔敵表與 SG 各層名單交叉核對；原 SG 區域標籤為章節上下文誤併。"
   },
   {
     "id": "m173",
@@ -27963,7 +28061,8 @@ window.VP_MONSTERS = [
       "熾天使之門・第2層",
       "熾天使之門・第3層",
       "熾天使之門・第4層",
-      "熾天使之門・犬小屋事件"
+      "熾天使之門・犬小屋事件",
+      "熾天使之門・第5層"
     ],
     "type": [
       "獸類"
@@ -28065,7 +28164,8 @@ window.VP_MONSTERS = [
       "monster-chulip",
       "sg-seiju",
       "pluto-enemy4",
-      "kouryaku-26"
+      "kouryaku-26",
+      "enc-sg"
     ],
     "icon": "beast",
     "boss": false,
@@ -28089,7 +28189,8 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "ビースト"
-    ]
+    ],
+    "areaNote": "青珠的第五層犬小屋 (8) 事件明列犬亞莉莎；補上原名單遺漏樓層。"
   },
   {
     "id": "m192",
@@ -32949,8 +33050,8 @@ window.VP_MONSTERS = [
     "jp": "犬レザード",
     "en": "",
     "area": [
-      "熾天使之門・第5層",
-      "熾天使之門・犬小屋事件"
+      "熾天使之門・犬小屋事件",
+      "熾天使之門・第3層"
     ],
     "type": [
       "獸類"
@@ -33029,7 +33130,8 @@ window.VP_MONSTERS = [
     "sourceIds": [
       "sg-seiju",
       "pluto-enemy4",
-      "kouryaku-26"
+      "kouryaku-26",
+      "enc-sg"
     ],
     "icon": "beast",
     "boss": false,
@@ -33053,6 +33155,7 @@ window.VP_MONSTERS = [
     "aliases": [],
     "typeJp": [
       "ビースト"
-    ]
+    ],
+    "areaNote": "犬雷札德第 10 劇場位於第三層；完成前 9 劇場後返回，並非第五層地點。"
   }
 ];
